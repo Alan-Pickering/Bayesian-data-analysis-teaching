@@ -208,7 +208,9 @@ for tr=1:numtrials
     %now set prior for next trial to be posterior from previous
     %aka Bayesian updating
     %also aka "belief propagation"
-    prior_dist=post_dist;
+    if tr<numtrials
+        prior_dist=post_dist; %do not reset prior on final trial
+    end;
     
     %plot out posterior distribution
     if tr==numtrials || mod(tr, plotit)==0
